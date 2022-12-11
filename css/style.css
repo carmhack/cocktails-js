@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-color: #fed330;
+    --text-color: #222;
+    --button-bg-color: #8854d0;
+    --button-text-color: #fff;
+    --glass: polygon(0 0, 100% 0, 86% 100%, 14% 100%);
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color)
+}
+
+.container {
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    width: 300px;
+    height: auto;
+}
+
+h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.buttons {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    column-gap: 20px;
+}
+
+.buttons button {
+    flex-basis: 48%;
+    padding: 12px 36px;
+    font-size: 1.2rem;
+    font-weight: 300;
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    border: 2px solid transparent;
+    border-radius: 12px;
+    transition: .5s ease-in-out;
+    cursor: pointer;
+}
+
+.buttons button:hover {
+    font-weight: 700;
+}
+
+.cocktail {
+    position: relative;
+    margin-top: 40px;
+    width: 300px;
+    height: 300px;
+}
+
+.cocktail::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 4px;
+    margin: 0 auto;
+    background-color: #222;
+}
+
+.glass {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    clip-path: var(--glass);
+    background-color: #222;
+}
+
+.glass-inner {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    left: 5px;
+    bottom: 5px;
+    clip-path: var(--glass);
+    background-color: #fff;
+    opacity: .8;
+}
+
+.ingredients {
+    margin-top: 10%;
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    text-align: center;
+}
+
+.ingredient {
+    opacity: 0;
+    animation-name: showIngredient;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+}
+
+@keyframes showIngredient {
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
