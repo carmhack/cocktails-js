@@ -121,6 +121,7 @@ h1 {
     animation-duration: .5s;
     animation-fill-mode: forwards;
     animation-timing-function: linear;
+    animation-delay: calc(var(--order) * 250ms);
 }
 
 @keyframes showIngredient {

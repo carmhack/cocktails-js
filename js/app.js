@@ -1,5 +1,4 @@
 const PATH = "./assets/data.json";
-const DELAY = 300;
 
 async function getCocktails(path) {
     const response = await fetch(path);
@@ -9,7 +8,6 @@ async function getCocktails(path) {
 
 function renderButtons(data) {
     const buttonsContainer = document.querySelector("#buttons");
-    buttonsContainer.innerHTML = "";
 
     data.forEach(cocktail => {
         const button = document.createElement("button");
@@ -34,16 +32,19 @@ function renderIngredients(data, cocktailName) {
         totalParts += part;
     });
 
-    let timeout = 0;
     for(let i = 0; i < ingredients.length; i++) {
         const { part, name, color } = ingredients[i];
+
         const height = (100 / totalParts) * part;
         const ingredient = document.createElement("div");
         ingredient.classList.add("ingredient");
         ingredient.innerText = `${part} part of ${name}`;
-        ingredient.style = `background-color: ${color}; height: ${height}%; animation-delay: ${timeout}ms;`;
+
+        ingredient.style.backgroundColor = color;
+        ingredient.style.height = `${height}%`;
+        ingredient.style.setProperty('--order', i+1);
+
         ingredientsContainer.insertAdjacentElement("afterbegin", ingredient);
-        timeout += DELAY;
     }
 }
 
